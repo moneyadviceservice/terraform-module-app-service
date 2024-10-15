@@ -103,7 +103,8 @@ variable "dotnet_version" {
   default     = "v8.0"
 }
 
-variable "app_setting_names" {
-  type        = map(string)
-  description = "A mapping of tags assigned to the Resource."
-}
+# variable "app_setting_names" {
+#   type        = map(string)
+#   default = null
+#   description = "A mapping of tags assigned to the Resource."
+# }

@@ -29,9 +29,9 @@ resource "azurerm_linux_web_app" "this" {
       }
     }
   }
-  sticky_settings {
-    app_setting_names = var.app_setting_names
-  }
+  #   sticky_settings {
+  #     app_setting_names = var.app_setting_names
+  #   }
 }
 
 resource "azurerm_windows_web_app" "this" {
