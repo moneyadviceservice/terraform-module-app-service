@@ -45,7 +45,7 @@ resource "azurerm_windows_web_app" "this" {
   https_only              = var.https_only
   tags                    = var.tags
   identity {
-    type = SystemAssigned
+    type = "SystemAssigned"
   }
   site_config {
     dynamic "application_stack" {
