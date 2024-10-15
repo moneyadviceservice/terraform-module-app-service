@@ -17,7 +17,7 @@ resource "azurerm_linux_web_app" "this" {
   https_only              = var.https_only
   tags                    = var.tags
   identity {
-    type = SystemAssigned
+    type = "SystemAssigned"
   }
   site_config {
     ftps_state = var.ftps_state

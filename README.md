@@ -1,5 +1,18 @@
 # terraform-module-app-service
-A Terraform module for the creation of App Services
+A Terraform module for the creation of [App Services](https://learn.microsoft.com/en-us/azure/app-service/overview).
+
+# Example
+```hcl
+module "this" {
+  source = "git@github.com:moneyadviceservice/terraform-module-app-services?ref=main"
+  product = var.product
+  env     = var.env
+  name    = var.name
+  os_type             = "Linux"
+  resource_group_name = data.azurerm_resource_group.this.name
+}
+
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
