@@ -21,3 +21,7 @@ variable "os_type" {
 variable "sku_name" {
 
 }
+
+variable "env" {
+  
+}
