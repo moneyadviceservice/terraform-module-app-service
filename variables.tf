@@ -73,3 +73,37 @@ variable "tags" {
   type        = map(string)
   description = "A mapping of tags assigned to the Resource."
 }
+
+variable "enable_client_affinity" {
+  type        = bool
+  default     = false
+  description = "(Optional) Should Client Affinity be enabled?"
+}
+
+variable "https_only" {
+  type        = bool
+  default     = true
+  description = "(Optional) Should the Web App require HTTPS connections."
+}
+
+variable "ftps_state" {
+  type        = string
+  description = "(Optional) State of FTP / FTPS service for this Windows Function App."
+  default     = null
+}
+
+variable "dotnet_stack" {
+  type    = bool
+  default = false
+}
+
+variable "dotnet_version" {
+  type        = string
+  description = "(Optional) The version of .NET to use."
+  default     = "v8.0"
+}
+
+variable "app_setting_names" {
+  type        = map(string)
+  description = "A mapping of tags assigned to the Resource."
+}
