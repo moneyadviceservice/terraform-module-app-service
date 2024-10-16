@@ -103,6 +103,12 @@ variable "dotnet_version" {
   default     = "v8.0"
 }
 
+variable "app_command_line" {
+  type        = string
+  default     = null
+  description = "(Optional) The App command line to launch."
+}
+
 # variable "app_setting_names" {
 #   type        = map(string)
 #   default = null
