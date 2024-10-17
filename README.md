@@ -66,5 +66,9 @@ No requirements.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_app_service_id"></a> [app\_service\_id](#output\_app\_service\_id) | n/a |
+| <a name="output_app_service_name"></a> [app\_service\_name](#output\_app\_service\_name) | n/a |
+| <a name="output_instrumentation_key"></a> [instrumentation\_key](#output\_instrumentation\_key) | n/a |
 <!-- END_TF_DOCS -->
