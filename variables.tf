@@ -21,6 +21,7 @@ variable "env" {
 variable "app_settings" {
   type        = map(string)
   description = "(Optional) A map of key-value pairs for App Settings and custom values."
+  default     = {}
 }
 
 variable "os_type" {
@@ -72,6 +73,7 @@ variable "sku_name" {
 variable "tags" {
   type        = map(string)
   description = "A mapping of tags assigned to the Resource."
+  default     = {}
 }
 
 variable "enable_client_affinity" {
@@ -108,9 +110,3 @@ variable "app_command_line" {
   default     = null
   description = "(Optional) The App command line to launch."
 }
-
-# variable "app_setting_names" {
-#   type        = map(string)
-#   default = null
-#   description = "A mapping of tags assigned to the Resource."
-# }

@@ -30,9 +30,6 @@ resource "azurerm_linux_web_app" "this" {
       }
     }
   }
-  #   sticky_settings {
-  #     app_setting_names = var.app_setting_names
-  #   }
 }
 
 resource "azurerm_windows_web_app" "this" {
@@ -63,8 +60,10 @@ resource "azurerm_windows_web_app" "this" {
 module "application_insights" {
   source = "github.com/moneyadviceservice/terraform-module-application-insights?ref=add_module"
 
+  name                = var.name
   env                 = var.env
   product             = var.product
-  name                = var.name
+  location            = var.location
   resource_group_name = var.resource_group_name
+  sku_name            = var.sku_name
 }
