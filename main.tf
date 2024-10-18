@@ -60,10 +60,8 @@ resource "azurerm_windows_web_app" "this" {
 module "application_insights" {
   source = "github.com/moneyadviceservice/terraform-module-application-insights?ref=add_module"
 
-  name                = var.name
   env                 = var.env
   product             = var.product
-  location            = var.location
+  name                = var.name
   resource_group_name = var.resource_group_name
-  sku_name            = var.sku_name
 }
