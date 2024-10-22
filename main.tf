@@ -1,5 +1,5 @@
 resource "azurerm_service_plan" "this" {
-  name                = "${var.product}-asp-${var.name}"
+  name                = "${var.product}-asp-${var.name}-${var.env}"
   resource_group_name = var.resource_group_name
   location            = var.location
   os_type             = var.os_type
@@ -8,7 +8,7 @@ resource "azurerm_service_plan" "this" {
 
 resource "azurerm_linux_web_app" "this" {
   count                   = var.os_type == "Linux" ? 1 : 0
-  name                    = var.name
+  name                    = "${var.name}-${var.env}"
   resource_group_name     = var.resource_group_name
   location                = azurerm_service_plan.this.location
   service_plan_id         = azurerm_service_plan.this.id
@@ -34,7 +34,7 @@ resource "azurerm_linux_web_app" "this" {
 
 resource "azurerm_windows_web_app" "this" {
   count                   = var.os_type == "Windows" ? 1 : 0
-  name                    = var.name
+  name                    = "${var.name}-${var.env}"
   resource_group_name     = var.resource_group_name
   location                = azurerm_service_plan.this.location
   service_plan_id         = azurerm_service_plan.this.id
@@ -62,6 +62,6 @@ module "application_insights" {
 
   env                 = var.env
   product             = var.product
-  name                = var.name
+  name                = "${var.name}-${var.env}"
   resource_group_name = var.resource_group_name
 }
