@@ -12,3 +12,7 @@ output "app_service_id" {
 output "app_service_name" {
   value = lower(var.os_type) == "windows" ? azurerm_windows_web_app.this[0].name : azurerm_linux_web_app.this[0].name
 }
+
+output "system_assigned_identity_object_id" {
+  value = lower(var.os_type) == "windows" ? azurerm_windows_web_app.this[0].identity[0].principal_id : azurerm_linux_web_app.this[0].identity[0].principal_id
+}
