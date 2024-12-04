@@ -16,6 +16,15 @@ resource "azurerm_linux_web_app" "this" {
   client_affinity_enabled = var.enable_client_affinity
   https_only              = var.https_only
   tags                    = var.tags
+  dynamic "connection_string" {
+    for_each = var.connection_strings
+    content {
+      name  = lookup(connection_string.value, "name", null)
+      type  = lookup(connection_string.value, "type", null)
+      value = lookup(connection_string.value, "value", null)
+    }
+  }
+
   identity {
     type = "SystemAssigned"
   }
