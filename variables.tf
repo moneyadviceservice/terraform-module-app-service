@@ -110,3 +110,9 @@ variable "app_command_line" {
   default     = null
   description = "(Optional) The App command line to launch."
 }
+
+variable "connection_strings" {
+  description = "Connection strings for App Service. See documentation"
+  type        = list(map(string))
+  default     = []
+}
