@@ -116,3 +116,14 @@ variable "connection_strings" {
   type        = list(map(string))
   default     = []
 }
+
+variable "enable_vnet_integration" {
+  type        = bool
+  description = "Enable integration with a virtual network"
+  default     = false
+}
+variable "subnet_id" {
+  type        = string
+  description = "The ID of the subnet to connect to"
+  default     = null
+}
