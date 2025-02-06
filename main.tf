@@ -86,6 +86,6 @@ module "application_insights" {
 resource "azurerm_app_service_virtual_network_swift_connection" "vnet-integration" {
   count = var.enable_vnet_integration == true ? 1 : 0
 
-  app_service_id = azurerm_windows_function_app.this.id
+  app_service_id = azurerm_linux_web_app.this.id
   subnet_id      = var.subnet_id
 }
