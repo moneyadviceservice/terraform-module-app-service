@@ -30,8 +30,9 @@ resource "azurerm_linux_web_app" "this" {
     type = "SystemAssigned"
   }
   site_config {
-    ftps_state       = var.ftps_state
-    app_command_line = var.app_command_line
+    ftps_state             = var.ftps_state
+    app_command_line       = var.app_command_line
+    vnet_route_all_enabled = var.enable_vnet_integration == true ? true : null
     dynamic "application_stack" {
       for_each = var.dotnet_stack ? [1] : []
       content {
@@ -83,10 +84,3 @@ module "application_insights" {
   name                = "${var.name}-${var.env}"
   resource_group_name = var.resource_group_name
 }
-
-# resource "azurerm_app_service_virtual_network_swift_connection" "vnet-integration" {
-#   count = var.enable_vnet_integration == true ? 1 : 0
-
-#   app_service_id = azurerm_linux_web_app.this[count.index].id
-#   subnet_id      = var.subnet_id
-# }
