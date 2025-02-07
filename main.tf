@@ -7,15 +7,16 @@ resource "azurerm_service_plan" "this" {
 }
 
 resource "azurerm_linux_web_app" "this" {
-  count                   = var.os_type == "Linux" ? 1 : 0
-  name                    = "${var.name}-${var.env}"
-  resource_group_name     = var.resource_group_name
-  location                = azurerm_service_plan.this.location
-  service_plan_id         = azurerm_service_plan.this.id
-  app_settings            = var.app_settings
-  client_affinity_enabled = var.enable_client_affinity
-  https_only              = var.https_only
-  tags                    = var.tags
+  count                     = var.os_type == "Linux" ? 1 : 0
+  name                      = "${var.name}-${var.env}"
+  resource_group_name       = var.resource_group_name
+  location                  = azurerm_service_plan.this.location
+  service_plan_id           = azurerm_service_plan.this.id
+  app_settings              = var.app_settings
+  client_affinity_enabled   = var.enable_client_affinity
+  https_only                = var.https_only
+  virtual_network_subnet_id = var.enable_vnet_integration == true ? var.subnet_id : null
+  tags                      = var.tags
   dynamic "connection_string" {
     for_each = var.connection_strings
     content {
@@ -83,9 +84,9 @@ module "application_insights" {
   resource_group_name = var.resource_group_name
 }
 
-resource "azurerm_app_service_virtual_network_swift_connection" "vnet-integration" {
-  count = var.enable_vnet_integration == true ? 1 : 0
+# resource "azurerm_app_service_virtual_network_swift_connection" "vnet-integration" {
+#   count = var.enable_vnet_integration == true ? 1 : 0
 
-  app_service_id = azurerm_linux_web_app.this[count.index].id
-  subnet_id      = var.subnet_id
-}
+#   app_service_id = azurerm_linux_web_app.this[count.index].id
+#   subnet_id      = var.subnet_id
+# }
