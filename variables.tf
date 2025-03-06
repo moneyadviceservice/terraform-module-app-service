@@ -110,3 +110,20 @@ variable "app_command_line" {
   default     = null
   description = "(Optional) The App command line to launch."
 }
+
+variable "connection_strings" {
+  description = "Connection strings for App Service. See documentation"
+  type        = list(map(string))
+  default     = []
+}
+
+variable "enable_vnet_integration" {
+  type        = bool
+  description = "Enable integration with a virtual network"
+  default     = false
+}
+variable "subnet_id" {
+  type        = string
+  description = "The ID of the subnet to connect to"
+  default     = null
+}

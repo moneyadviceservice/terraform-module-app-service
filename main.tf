@@ -7,21 +7,32 @@ resource "azurerm_service_plan" "this" {
 }
 
 resource "azurerm_linux_web_app" "this" {
-  count                   = var.os_type == "Linux" ? 1 : 0
-  name                    = "${var.name}-${var.env}"
-  resource_group_name     = var.resource_group_name
-  location                = azurerm_service_plan.this.location
-  service_plan_id         = azurerm_service_plan.this.id
-  app_settings            = var.app_settings
-  client_affinity_enabled = var.enable_client_affinity
-  https_only              = var.https_only
-  tags                    = var.tags
+  count                     = var.os_type == "Linux" ? 1 : 0
+  name                      = "${var.name}-${var.env}"
+  resource_group_name       = var.resource_group_name
+  location                  = azurerm_service_plan.this.location
+  service_plan_id           = azurerm_service_plan.this.id
+  app_settings              = var.app_settings
+  client_affinity_enabled   = var.enable_client_affinity
+  https_only                = var.https_only
+  virtual_network_subnet_id = var.enable_vnet_integration == true ? var.subnet_id : null
+  tags                      = var.tags
+  dynamic "connection_string" {
+    for_each = var.connection_strings
+    content {
+      name  = lookup(connection_string.value, "name", null)
+      type  = lookup(connection_string.value, "type", null)
+      value = lookup(connection_string.value, "value", null)
+    }
+  }
+
   identity {
     type = "SystemAssigned"
   }
   site_config {
-    ftps_state       = var.ftps_state
-    app_command_line = var.app_command_line
+    ftps_state             = var.ftps_state
+    app_command_line       = var.app_command_line
+    vnet_route_all_enabled = var.enable_vnet_integration == true ? true : null
     dynamic "application_stack" {
       for_each = var.dotnet_stack ? [1] : []
       content {
@@ -42,6 +53,14 @@ resource "azurerm_windows_web_app" "this" {
   client_affinity_enabled = var.enable_client_affinity
   https_only              = var.https_only
   tags                    = var.tags
+  dynamic "connection_string" {
+    for_each = var.connection_strings
+    content {
+      name  = lookup(connection_string.value, "name", null)
+      type  = lookup(connection_string.value, "type", null)
+      value = lookup(connection_string.value, "value", null)
+    }
+  }
   identity {
     type = "SystemAssigned"
   }

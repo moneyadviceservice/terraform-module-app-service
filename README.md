@@ -48,6 +48,7 @@ No requirements.
 | <a name="input_account_replication_type"></a> [account\_replication\_type](#input\_account\_replication\_type) | (Required) Defines the type of replication to use for this storage account. | `string` | `"ZRS"` | no |
 | <a name="input_app_command_line"></a> [app\_command\_line](#input\_app\_command\_line) | (Optional) The App command line to launch. | `string` | `null` | no |
 | <a name="input_app_settings"></a> [app\_settings](#input\_app\_settings) | (Optional) A map of key-value pairs for App Settings and custom values. | `map(string)` | `{}` | no |
+| <a name="input_connection_strings"></a> [connection\_strings](#input\_connection\_strings) | Connection strings for App Service. See documentation | `list(map(string))` | `[]` | no |
 | <a name="input_create_service_plan"></a> [create\_service\_plan](#input\_create\_service\_plan) | If true a new service plan is created | `bool` | `true` | no |
 | <a name="input_dotnet_stack"></a> [dotnet\_stack](#input\_dotnet\_stack) | n/a | `bool` | `false` | no |
 | <a name="input_dotnet_version"></a> [dotnet\_version](#input\_dotnet\_version) | (Optional) The version of .NET to use. | `string` | `"8.0"` | no |
@@ -73,4 +74,5 @@ No requirements.
 | <a name="output_app_service_id"></a> [app\_service\_id](#output\_app\_service\_id) | n/a |
 | <a name="output_app_service_name"></a> [app\_service\_name](#output\_app\_service\_name) | n/a |
 | <a name="output_instrumentation_key"></a> [instrumentation\_key](#output\_instrumentation\_key) | n/a |
+| <a name="output_system_assigned_identity_object_id"></a> [system\_assigned\_identity\_object\_id](#output\_system\_assigned\_identity\_object\_id) | n/a |
 <!-- END_TF_DOCS -->
