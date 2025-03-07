@@ -146,3 +146,15 @@ variable "staging_slot_site_config" {
   default     = {}
   nullable    = false
 }
+
+variable "public_network_access_enabled" {
+
+}
+
+variable "slot_os_type" {
+
+}
+
+variable "id" {
+
+}
