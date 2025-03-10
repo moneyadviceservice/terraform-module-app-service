@@ -1,7 +1,7 @@
 resource "azurerm_linux_web_app_slot" "this" {
   count = lower(var.slot_os_type) == "linux" ? 1 : 0
 
-  name           = var.name
+  name           = "${var.name}-staging-slot"
   app_service_id = var.id
 
   public_network_access_enabled = var.public_network_access_enabled

@@ -128,6 +128,12 @@ variable "subnet_id" {
   default     = null
 }
 
+variable "public_network_access_enabled" {
+  type        = bool
+  description = "Enable public network access"
+  default     = true
+}
+
 variable "staging_slot_enabled" {
   type        = bool
   description = "Create a staging slot alongside the App Service for blue/green deployment purposes. See [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service_slot)."

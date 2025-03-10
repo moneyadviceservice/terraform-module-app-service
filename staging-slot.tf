@@ -3,7 +3,7 @@ module "staging_slot" {
 
   source = "slots"
 
-  environment = var.environment
+  environment  = var.environment
   dotnet_stack = var.dotnet_stack
 
   slot_os_type = "Linux"
