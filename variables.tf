@@ -126,4 +126,36 @@ variable "subnet_id" {
   type        = string
   description = "The ID of the subnet to connect to"
   default     = null
+<<<<<<< Updated upstream
+=======
+}
+
+variable "public_network_access_enabled" {
+  type        = bool
+  description = "Enable public network access"
+  default     = true
+}
+
+variable "staging_slot_enabled" {
+  type        = bool
+  description = "Create a staging slot alongside the App Service for blue/green deployment purposes. See [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service_slot)."
+  default     = true
+}
+
+variable "staging_slot_custom_app_settings" {
+  type        = map(string)
+  description = "Override staging slot with custom app settings."
+  default     = null
+}
+
+variable "staging_slot_site_config" {
+  description = "Staging slot site config for App Service."
+  type        = any
+  default     = {}
+  nullable    = false
+}
+
+variable "app_service_plan_id" {
+  default = null
+>>>>>>> Stashed changes
 }
