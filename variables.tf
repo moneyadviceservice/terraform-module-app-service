@@ -126,8 +126,6 @@ variable "subnet_id" {
   type        = string
   description = "The ID of the subnet to connect to"
   default     = null
-<<<<<<< Updated upstream
-=======
 }
 
 variable "public_network_access_enabled" {
@@ -157,5 +155,4 @@ variable "staging_slot_site_config" {
 
 variable "app_service_plan_id" {
   default = null
->>>>>>> Stashed changes
 }
