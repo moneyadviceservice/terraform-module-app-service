@@ -1,6 +1,6 @@
 resource "azurerm_monitor_autoscale_setting" "scale_out" {
   for_each            = var.app_service_plan_id == null ? toset(["default"]) : toset([])
-  name                = azurerm_service_plan.this[count.index].name
+  name                = azurerm_service_plan.this["default"].name
   resource_group_name = var.resource_group_name
   location            = var.location
   target_resource_id  = azurerm_service_plan.this["default"].id
