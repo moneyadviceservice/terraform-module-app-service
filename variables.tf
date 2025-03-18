@@ -38,7 +38,7 @@ variable "product" {
 variable "create_service_plan" {
   type        = bool
   description = "If true a new service plan is created"
-  default     = true
+  default     = false
 }
 
 variable "service_plan_id" {
@@ -159,9 +159,4 @@ variable "app_service_plan_id" {
 
 variable "asp_name" {
   default = null
-}
-
-variable "create_service_plan" {
-  type    = bool
-  default = false
 }
