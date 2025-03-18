@@ -160,3 +160,8 @@ variable "app_service_plan_id" {
 variable "asp_name" {
   default = null
 }
+
+variable "create_service_plan" {
+  type    = bool
+  default = false
+}
