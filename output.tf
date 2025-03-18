@@ -18,5 +18,5 @@ output "system_assigned_identity_object_id" {
 }
 
 output "asp_id" {
-  value = azurerm_service_plan.this[0].id
+  value = azurerm_service_plan.this["default"].id
 }
