@@ -33,12 +33,3 @@ resource "azurerm_windows_web_app" "this" {
     ftps_state = var.ftps_state
   }
 }
-
-module "application_insights" {
-  source = "github.com/moneyadviceservice/terraform-module-application-insights?ref=add_module"
-
-  env                 = var.env
-  product             = var.product
-  name                = "${var.name}-${var.env}"
-  resource_group_name = var.resource_group_name
-}
