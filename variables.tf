@@ -156,3 +156,7 @@ variable "staging_slot_site_config" {
 variable "app_service_plan_id" {
   default = null
 }
+
+variable "asp_name" {
+  default = null
+}
