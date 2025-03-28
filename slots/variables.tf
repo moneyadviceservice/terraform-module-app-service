@@ -148,7 +148,9 @@ variable "staging_slot_site_config" {
 }
 
 variable "public_network_access_enabled" {
-
+  type        = bool
+  description = "Enable public network access"
+  default     = true
 }
 
 variable "slot_os_type" {

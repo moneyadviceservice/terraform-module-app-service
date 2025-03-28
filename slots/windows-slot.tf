@@ -6,6 +6,9 @@ resource "azurerm_windows_web_app_slot" "this" {
 
   public_network_access_enabled = var.public_network_access_enabled
   virtual_network_subnet_id     = var.enable_vnet_integration == true ? var.subnet_id : null
+  app_settings = var.app_settings
+  client_affinity_enabled = var.enable_client_affinity
+  https_only              = var.https_only
 
   site_config {
     ftps_state             = var.ftps_state
@@ -19,9 +22,6 @@ resource "azurerm_windows_web_app_slot" "this" {
       }
     }
   }
-
-  app_settings = var.app_settings
-
   dynamic "connection_string" {
     for_each = var.connection_strings
     content {
@@ -30,9 +30,6 @@ resource "azurerm_windows_web_app_slot" "this" {
       value = lookup(connection_string.value, "value", null)
     }
   }
-  client_affinity_enabled = var.enable_client_affinity
-  https_only              = var.https_only
-
   identity {
     type = "SystemAssigned"
   }
