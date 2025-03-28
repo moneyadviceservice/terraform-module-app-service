@@ -14,14 +14,14 @@ resource "azurerm_monitor_autoscale_setting" "scale_out" {
 
     rule {
       metric_trigger {
-        metric_name         = "CpuPercentage"
-        metric_resource_id  = azurerm_service_plan.this.id
-        time_grain          = "PT1M"
-        statistic           = "Average"
-        time_window         = "PT5M"
-        time_aggregation    = "Average"
-        operator            = "GreaterThan"
-        threshold           = 60
+        metric_name        = "CpuPercentage"
+        metric_resource_id = azurerm_service_plan.this.id
+        time_grain         = "PT1M"
+        statistic          = "Average"
+        time_window        = "PT5M"
+        time_aggregation   = "Average"
+        operator           = "GreaterThan"
+        threshold          = 60
       }
 
       scale_action {
@@ -34,14 +34,14 @@ resource "azurerm_monitor_autoscale_setting" "scale_out" {
 
     rule {
       metric_trigger {
-        metric_name         = "CpuPercentage"
-        metric_resource_id  = azurerm_service_plan.this.id
-        time_grain          = "PT1M"
-        statistic           = "Average"
-        time_window         = "PT5M"
-        time_aggregation    = "Average"
-        operator            = "LessThan"
-        threshold           = 40
+        metric_name        = "CpuPercentage"
+        metric_resource_id = azurerm_service_plan.this.id
+        time_grain         = "PT1M"
+        statistic          = "Average"
+        time_window        = "PT5M"
+        time_aggregation   = "Average"
+        operator           = "LessThan"
+        threshold          = 40
       }
 
       scale_action {

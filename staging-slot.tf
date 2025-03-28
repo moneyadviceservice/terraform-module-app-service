@@ -1,9 +1,8 @@
 module "staging_slot" {
   count = var.staging_slot_enabled ? 1 : 0
 
-  source = "slots"
+  source = "./slots"
 
-  environment  = var.environment
   dotnet_stack = var.dotnet_stack
 
   slot_os_type = "Linux"
@@ -12,8 +11,6 @@ module "staging_slot" {
 
   public_network_access_enabled = var.public_network_access_enabled
   vnet_integration_subnet_id    = var.vnet_integration_subnet_id
-  ip_restriction                = concat(local.subnets, local.cidrs, local.service_tags)
-  scm_ip_restriction            = concat(local.scm_subnets, local.scm_cidrs, local.scm_service_tags)
   scm_allowed_cidrs             = var.scm_allowed_cidrs
   scm_allowed_subnet_ids        = var.scm_allowed_subnet_ids
 
