@@ -1,4 +1,4 @@
-resource "azurerm_linux_web_app_slot" "this" {
+resource "azurerm_windows_web_app_slot" "this" {
   count = lower(var.slot_os_type) == "windows" ? 1 : 0
 
   name           = "${var.name}-staging-slot"
