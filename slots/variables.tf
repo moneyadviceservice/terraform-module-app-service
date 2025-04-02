@@ -154,9 +154,12 @@ variable "public_network_access_enabled" {
 }
 
 variable "slot_os_type" {
-
+  type        = string
+  description = "(Required) The O/S type for the App Services slot to be hosted in this plan."
+  default     = "Linux"
 }
 
 variable "id" {
-
+  type        = string
+  description = "(Required) The id of the app service to attach to"
 }
