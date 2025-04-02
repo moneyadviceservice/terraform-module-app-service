@@ -1,11 +1,3 @@
-resource "azurerm_service_plan" "this" {
-  name                = "${var.product}-asp-${var.name}-${var.env}"
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  os_type             = var.os_type
-  sku_name            = var.sku_name
-}
-
 resource "azurerm_linux_web_app" "this" {
   count                         = var.os_type == "Linux" ? 1 : 0
   name                          = "${var.name}-${var.env}"

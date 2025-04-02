@@ -152,3 +152,9 @@ variable "staging_slot_site_config" {
   default     = {}
   nullable    = false
 }
+
+variable "zone_redundant" {
+  type        = bool
+  description = " Should the Service Plan balance across Availability Zones in the region?"
+  default     = false
+}
