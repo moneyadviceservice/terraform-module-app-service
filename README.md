@@ -72,6 +72,7 @@ No requirements.
 | <a name="input_staging_slot_site_config"></a> [staging\_slot\_site\_config](#input\_staging\_slot\_site\_config) | Staging slot site config for App Service. | `any` | `{}` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | The ID of the subnet to connect to | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags assigned to the Resource. | `map(string)` | `{}` | no |
+| <a name="input_zone_redundant"></a> [zone\_redundant](#input\_zone\_redundant) | Should the Service Plan balance across Availability Zones in the region? | `bool` | `false` | no |
 
 ## Outputs
 
