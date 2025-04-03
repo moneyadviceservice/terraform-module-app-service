@@ -128,12 +128,6 @@ variable "subnet_id" {
   default     = null
 }
 
-variable "public_network_access_enabled" {
-  type        = bool
-  description = "Enable public network access"
-  default     = true
-}
-
 variable "staging_slot_enabled" {
   type        = bool
   description = "Create a staging slot alongside the App Service for blue/green deployment purposes. See [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service_slot)."
@@ -153,8 +147,19 @@ variable "staging_slot_site_config" {
   nullable    = false
 }
 
-variable "zone_redundant" {
+variable "public_network_access_enabled" {
   type        = bool
-  description = " Should the Service Plan balance across Availability Zones in the region?"
-  default     = false
+  description = "Enable public network access"
+  default     = true
+}
+
+variable "slot_os_type" {
+  type        = string
+  description = "(Required) The O/S type for the App Services slot to be hosted in this plan."
+  default     = "Linux"
+}
+
+variable "id" {
+  type        = string
+  description = "(Required) The id of the app service to attach to"
 }

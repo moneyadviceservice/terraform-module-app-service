@@ -1,20 +1,3 @@
-# terraform-module-app-service
-A Terraform module for the creation of [App Services](https://learn.microsoft.com/en-us/azure/app-service/overview).
-
-# Example
-```hcl
-module "this" {
-  source  = "git@github.com:moneyadviceservice/terraform-module-app-services?ref=main"
-  
-  product             = var.product
-  env                 = var.env
-  name                = var.name
-  os_type             = "Linux"
-  resource_group_name = data.azurerm_resource_group.this.name
-}
-
-```
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -28,18 +11,14 @@ No requirements.
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_application_insights"></a> [application\_insights](#module\_application\_insights) | github.com/moneyadviceservice/terraform-module-application-insights | add_module |
+No modules.
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [azurerm_linux_web_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_web_app) | resource |
-| [azurerm_monitor_autoscale_setting.scale_out](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_autoscale_setting) | resource |
-| [azurerm_service_plan.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/service_plan) | resource |
-| [azurerm_windows_web_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_web_app) | resource |
+| [azurerm_linux_web_app_slot.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_web_app_slot) | resource |
+| [azurerm_windows_web_app_slot.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/windows_web_app_slot) | resource |
 
 ## Inputs
 
@@ -58,6 +37,7 @@ No requirements.
 | <a name="input_env"></a> [env](#input\_env) | The environment to deploy to | `string` | n/a | yes |
 | <a name="input_ftps_state"></a> [ftps\_state](#input\_ftps\_state) | (Optional) State of FTP / FTPS service for this Windows Function App. | `string` | `null` | no |
 | <a name="input_https_only"></a> [https\_only](#input\_https\_only) | (Optional) Should the Web App require HTTPS connections. | `bool` | `true` | no |
+| <a name="input_id"></a> [id](#input\_id) | (Required) The id of the app service to attach to | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | n/a | `string` | `"UK South"` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name of your function app | `string` | n/a | yes |
 | <a name="input_os_type"></a> [os\_type](#input\_os\_type) | (Required) The O/S type for the App Services to be hosted in this plan. | `string` | `"Linux"` | no |
@@ -67,20 +47,14 @@ No requirements.
 | <a name="input_sa_account_tier"></a> [sa\_account\_tier](#input\_sa\_account\_tier) | (Required) Defines the Tier to use for this storage account | `string` | `"Standard"` | no |
 | <a name="input_service_plan_id"></a> [service\_plan\_id](#input\_service\_plan\_id) | If you want to use an existing service plan | `string` | `null` | no |
 | <a name="input_sku_name"></a> [sku\_name](#input\_sku\_name) | (Required) The SKU for the plan. | `string` | `"Y1"` | no |
+| <a name="input_slot_os_type"></a> [slot\_os\_type](#input\_slot\_os\_type) | (Required) The O/S type for the App Services slot to be hosted in this plan. | `string` | `"Linux"` | no |
 | <a name="input_staging_slot_custom_app_settings"></a> [staging\_slot\_custom\_app\_settings](#input\_staging\_slot\_custom\_app\_settings) | Override staging slot with custom app settings. | `map(string)` | `null` | no |
 | <a name="input_staging_slot_enabled"></a> [staging\_slot\_enabled](#input\_staging\_slot\_enabled) | Create a staging slot alongside the App Service for blue/green deployment purposes. See [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service_slot). | `bool` | `true` | no |
 | <a name="input_staging_slot_site_config"></a> [staging\_slot\_site\_config](#input\_staging\_slot\_site\_config) | Staging slot site config for App Service. | `any` | `{}` | no |
 | <a name="input_subnet_id"></a> [subnet\_id](#input\_subnet\_id) | The ID of the subnet to connect to | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags assigned to the Resource. | `map(string)` | `{}` | no |
-| <a name="input_zone_redundant"></a> [zone\_redundant](#input\_zone\_redundant) | Should the Service Plan balance across Availability Zones in the region? | `bool` | `false` | no |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| <a name="output_app_insights_app_id"></a> [app\_insights\_app\_id](#output\_app\_insights\_app\_id) | n/a |
-| <a name="output_app_service_id"></a> [app\_service\_id](#output\_app\_service\_id) | n/a |
-| <a name="output_app_service_name"></a> [app\_service\_name](#output\_app\_service\_name) | n/a |
-| <a name="output_instrumentation_key"></a> [instrumentation\_key](#output\_instrumentation\_key) | n/a |
-| <a name="output_system_assigned_identity_object_id"></a> [system\_assigned\_identity\_object\_id](#output\_system\_assigned\_identity\_object\_id) | n/a |
+No outputs.
 <!-- END_TF_DOCS -->
