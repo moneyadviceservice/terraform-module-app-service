@@ -11,9 +11,10 @@ resource "azurerm_windows_web_app_slot" "this" {
   https_only                    = var.https_only
 
   site_config {
-    ftps_state             = var.ftps_state
-    app_command_line       = var.app_command_line
-    vnet_route_all_enabled = var.enable_vnet_integration == true ? true : null
+    ip_restriction_default_action = var.ip_restriction_default_action == null ? "Deny" : var.ip_restriction_default_action
+    ftps_state                    = var.ftps_state
+    app_command_line              = var.app_command_line
+    vnet_route_all_enabled        = var.enable_vnet_integration == true ? true : null
     dynamic "application_stack" {
       for_each = var.dotnet_stack ? [1] : []
       content {

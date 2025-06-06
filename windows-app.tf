@@ -23,6 +23,7 @@ resource "azurerm_windows_web_app" "this" {
     type = "SystemAssigned"
   }
   site_config {
+    ip_restriction_default_action = var.ip_restriction_default_action == null ? "Deny" : var.ip_restriction_default_action
     dynamic "application_stack" {
       for_each = var.dotnet_stack ? [1] : []
       content {
