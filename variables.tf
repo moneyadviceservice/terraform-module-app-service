@@ -171,7 +171,7 @@ variable "ip_restrictions" {
     name                      = string
     priority                  = number
     action                    = string
-    virtual_network_subnet_id = optional(string)
+    virtual_network_subnet_id = string
     ip_address                = optional(string)
     headers = optional(list(object({
       x_azure_fdid      = optional(list(string))
