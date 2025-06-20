@@ -9,7 +9,8 @@ resource "azurerm_linux_web_app" "this" {
   https_only                    = var.https_only
   public_network_access_enabled = var.public_network_access_enabled
   virtual_network_subnet_id     = var.enable_vnet_integration == true ? var.subnet_id : null
-  tags                          = var.tags
+
+  tags = var.tags
   dynamic "connection_string" {
     for_each = var.connection_strings
     content {
@@ -42,6 +43,7 @@ resource "azurerm_linux_web_app" "this" {
         action                    = ip_restriction.value.action
         virtual_network_subnet_id = ip_restriction.value.virtual_network_subnet_id
         headers                   = ip_restriction.value.headers
+        ip_address                = ip_restriction.value.ip_address
       }
     }
   }
