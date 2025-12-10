@@ -165,6 +165,12 @@ variable "ip_restriction_default_action" {
   default     = "Allow"
 }
 
+variable "log_retention_days" {
+  type        = number
+  description = "(Optional) Specifies the retention period in days. Possible values are 30, 60, 90, 120, 180, 270, 365, 550 or 730. Defaults to 90"
+  default     = 90
+}
+
 variable "ip_restrictions" {
   description = "List of IP restrictions for the App Service"
   type = list(object({
