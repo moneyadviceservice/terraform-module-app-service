@@ -9,7 +9,7 @@ resource "azurerm_service_plan" "this" {
 }
 
 module "application_insights" {
-  source = "github.com/moneyadviceservice/terraform-module-application-insights?ref=add_module"
+  source = "github.com/moneyadviceservice/terraform-module-application-insights?ref=main"
 
   env                 = var.env
   product             = var.product
