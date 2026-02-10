@@ -7,9 +7,9 @@ resource "azurerm_monitor_autoscale_setting" "scale_out" {
   profile {
     name = "Scale out condition"
     capacity {
-      default = 1
-      minimum = 1
-      maximum = 6
+      default = 2
+      minimum = 2
+      maximum = 30
     }
 
     rule {
