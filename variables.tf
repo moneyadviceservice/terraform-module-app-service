@@ -38,7 +38,7 @@ variable "product" {
 variable "create_service_plan" {
   type        = bool
   description = "If true a new service plan is created"
-  default     = true
+  default     = false
 }
 
 variable "service_plan_id" {
@@ -153,6 +153,9 @@ variable "staging_slot_site_config" {
   nullable    = false
 }
 
+variable "asp_name" {
+  default = null
+}
 variable "zone_redundant" {
   type        = bool
   description = " Should the Service Plan balance across Availability Zones in the region?"

@@ -3,8 +3,8 @@ resource "azurerm_windows_web_app" "this" {
   count                         = var.os_type == "Windows" ? 1 : 0
   name                          = "${var.name}-${var.env}"
   resource_group_name           = var.resource_group_name
-  location                      = azurerm_service_plan.this.location
-  service_plan_id               = azurerm_service_plan.this.id
+  location                      = var.location
+  service_plan_id               = var.create_service_plan == true ? azurerm_service_plan.this[count.index].id : var.service_plan_id
   app_settings                  = var.app_settings
   client_affinity_enabled       = var.enable_client_affinity
   https_only                    = var.https_only
