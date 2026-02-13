@@ -2,14 +2,24 @@ resource "azurerm_linux_web_app" "this" {
   count                         = var.os_type == "Linux" ? 1 : 0
   name                          = "${var.name}-${var.env}"
   resource_group_name           = var.resource_group_name
+<<<<<<< HEAD
   location                      = var.location
   service_plan_id               = var.create_service_plan == true ? azurerm_service_plan.this[count.index].id : var.service_plan_id
+=======
+  location                      = azurerm_service_plan.this.location
+  service_plan_id               = azurerm_service_plan.this.id
+>>>>>>> 628fc2280857197d9a4add4dd6e8c71a000a2649
   app_settings                  = var.app_settings
   client_affinity_enabled       = var.enable_client_affinity
   https_only                    = var.https_only
   public_network_access_enabled = var.public_network_access_enabled
   virtual_network_subnet_id     = var.enable_vnet_integration == true ? var.subnet_id : null
+<<<<<<< HEAD
   tags                          = var.tags
+=======
+
+  tags = var.tags
+>>>>>>> 628fc2280857197d9a4add4dd6e8c71a000a2649
   dynamic "connection_string" {
     for_each = var.connection_strings
     content {
@@ -23,9 +33,16 @@ resource "azurerm_linux_web_app" "this" {
     type = "SystemAssigned"
   }
   site_config {
+<<<<<<< HEAD
     ftps_state             = var.ftps_state
     app_command_line       = var.app_command_line
     vnet_route_all_enabled = var.enable_vnet_integration == true ? true : null
+=======
+    ip_restriction_default_action = var.ip_restriction_default_action == null ? "Deny" : var.ip_restriction_default_action
+    ftps_state                    = var.ftps_state
+    app_command_line              = var.app_command_line
+    vnet_route_all_enabled        = var.enable_vnet_integration == true ? true : null
+>>>>>>> 628fc2280857197d9a4add4dd6e8c71a000a2649
     dynamic "application_stack" {
       for_each = var.dotnet_stack ? [1] : []
       content {
@@ -33,5 +50,19 @@ resource "azurerm_linux_web_app" "this" {
 
       }
     }
+<<<<<<< HEAD
+=======
+    dynamic "ip_restriction" {
+      for_each = var.ip_restrictions
+      content {
+        name                      = ip_restriction.value.name
+        priority                  = ip_restriction.value.priority
+        action                    = ip_restriction.value.action
+        virtual_network_subnet_id = ip_restriction.value.virtual_network_subnet_id
+        headers                   = ip_restriction.value.headers
+        ip_address                = ip_restriction.value.ip_address
+      }
+    }
+>>>>>>> 628fc2280857197d9a4add4dd6e8c71a000a2649
   }
 }

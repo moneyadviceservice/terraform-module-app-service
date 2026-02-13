@@ -38,7 +38,7 @@ variable "product" {
 variable "create_service_plan" {
   type        = bool
   description = "If true a new service plan is created"
-  default     = false
+  default     = true
 }
 
 variable "service_plan_id" {
@@ -128,12 +128,6 @@ variable "subnet_id" {
   default     = null
 }
 
-variable "public_network_access_enabled" {
-  type        = bool
-  description = "Enable public network access"
-  default     = true
-}
-
 variable "staging_slot_enabled" {
   type        = bool
   description = "Create a staging slot alongside the App Service for blue/green deployment purposes. See [documentation](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/app_service_slot)."
@@ -153,26 +147,21 @@ variable "staging_slot_site_config" {
   nullable    = false
 }
 
-<<<<<<< HEAD
-variable "asp_name" {
-  default = null
-=======
-variable "zone_redundant" {
+variable "public_network_access_enabled" {
   type        = bool
-  description = " Should the Service Plan balance across Availability Zones in the region?"
-  default     = false
+  description = "Enable public network access"
+  default     = true
 }
 
-variable "ip_restriction_default_action" {
+variable "slot_os_type" {
   type        = string
-  description = "The default action"
-  default     = "Allow"
+  description = "(Required) The O/S type for the App Services slot to be hosted in this plan."
+  default     = "Linux"
 }
 
-variable "log_retention_days" {
-  type        = number
-  description = "(Optional) Specifies the retention period in days. Possible values are 30, 60, 90, 120, 180, 270, 365, 550 or 730. Defaults to 90"
-  default     = 90
+variable "id" {
+  type        = string
+  description = "(Required) The id of the app service to attach to"
 }
 
 variable "ip_restrictions" {
@@ -181,8 +170,8 @@ variable "ip_restrictions" {
     name                      = string
     priority                  = number
     action                    = string
-    virtual_network_subnet_id = string
-    ip_address                = string
+    virtual_network_subnet_id = optional(string)
+    ip_address                = optional(string)
     headers = optional(list(object({
       x_azure_fdid      = optional(list(string))
       x_fd_health_probe = optional(list(string))
@@ -191,5 +180,10 @@ variable "ip_restrictions" {
     })), [])
   }))
   default = []
->>>>>>> 628fc2280857197d9a4add4dd6e8c71a000a2649
+}
+
+variable "ip_restriction_default_action" {
+  type        = string
+  description = "The default action"
+  default     = "Allow"
 }
