@@ -18,5 +18,5 @@ output "system_assigned_identity_object_id" {
 }
 
 output "service_plan_id" {
-  value = azurerm_service_plan.this[count.index].id
+  value = azurerm_service_plan.this.id
 }
