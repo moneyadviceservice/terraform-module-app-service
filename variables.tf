@@ -153,10 +153,9 @@ variable "staging_slot_site_config" {
   nullable    = false
 }
 
-<<<<<<< HEAD
 variable "asp_name" {
   default = null
-=======
+}
 variable "zone_redundant" {
   type        = bool
   description = " Should the Service Plan balance across Availability Zones in the region?"
@@ -191,5 +190,4 @@ variable "ip_restrictions" {
     })), [])
   }))
   default = []
->>>>>>> 628fc2280857197d9a4add4dd6e8c71a000a2649
 }

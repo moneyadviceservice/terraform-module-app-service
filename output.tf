@@ -17,11 +17,6 @@ output "system_assigned_identity_object_id" {
   value = lower(var.os_type) == "windows" ? azurerm_windows_web_app.this[0].identity[0].principal_id : azurerm_linux_web_app.this[0].identity[0].principal_id
 }
 
-<<<<<<< HEAD
-output "asp_id" {
-  value = length(azurerm_service_plan.this) > 0 ? azurerm_service_plan.this[0].id : null
-=======
 output "service_plan_id" {
   value = azurerm_service_plan.this.id
->>>>>>> 628fc2280857197d9a4add4dd6e8c71a000a2649
 }
