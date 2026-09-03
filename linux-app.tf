@@ -12,7 +12,10 @@ resource "azurerm_linux_web_app" "this" {
   tags                          = var.tags
 
   sticky_settings {
-    app_setting_names = keys(var.app_settings)
+    app_setting_names = [
+      for k in keys(var.app_settings) : k
+      if !startswith(k, "WEBSITE_")
+    ]
     connection_string_names = [
       for cs in var.connection_strings : cs.name
     ]
@@ -30,7 +33,7 @@ resource "azurerm_linux_web_app" "this" {
   identity {
     type = "SystemAssigned"
   }
-  
+
   site_config {
     ip_restriction_default_action = var.ip_restriction_default_action == null ? "Deny" : var.ip_restriction_default_action
     ftps_state                    = var.ftps_state
